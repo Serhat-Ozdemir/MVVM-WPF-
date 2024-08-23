@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="DenemeMVVM.Views.GetOrdersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DenemeMVVM.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".7*"/>
+            <ColumnDefinition Width=".3*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListView Grid.Column="0" Margin="1,5,10,20" ItemsSource="{Binding Menu}" SelectedItem="{Binding SelectedItem}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Price">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Price}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".05*"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".5*"/>
+            </Grid.RowDefinitions>
+
+            <ListView Grid.Row="5" Margin="5,5,10,20"  ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedOrder}"  >
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock HorizontalAlignment="Center" Text="{Binding MenuItems.Name}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Quantity">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock HorizontalAlignment="Center" Text="{Binding Quantity}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Cost">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock HorizontalAlignment="Center" Text="{Binding Cost}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <TextBlock Grid.Row="0" Width="120" Height="50" Text="Name" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBlock Grid.Row="1" Width="200" Height="30" Text="{Binding SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}"  FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBlock Grid.Row="2" Width="120" Height="50" Text="Quantity" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBox Grid.Row="3" Width="200" Height="30" Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Button Grid.Row="4" Command="{Binding GiveOrderCommand}" Content="Give Order" Width="70" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Button Grid.Row="4" Command="{Binding CancelOrderCommand}" Content="Cancel Order" Width="70" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button Grid.Row="4" Command="{Binding SelectTableCommand}" Content="Select Table" Width="70" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,17 +1,21 @@
 ﻿using DenemeMVVM.Commands;
 using DenemeMVVM.Models;
 using DenemeMVVM.Stores;
+using HelixToolkit.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Media3D;
 
 namespace DenemeMVVM.ViewModels
 {
     internal class LoginViewModel : ViewModelBase
     {
+
         public ICommand LoginCommand { get; }
 
         public LoginViewModel(Restaurant restaurant, NavigationStore navigationStore) 
@@ -46,5 +50,7 @@ namespace DenemeMVVM.ViewModels
 				OnPropertyChanged(nameof(Password));
 			}
 		}
-	}
+
+		
+    }
 }

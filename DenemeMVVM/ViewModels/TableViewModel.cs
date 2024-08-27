@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DenemeMVVM.ViewModels
 {
-    public class TableViewModel
+    public class TableViewModel:ViewModelBase
     {
         public Table _table;
         public int TableId => _table.TableId;

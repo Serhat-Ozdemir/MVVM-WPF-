@@ -1,4 +1,5 @@
-﻿using DenemeMVVM.Models;
+﻿using DenemeMVVM.Db;
+using DenemeMVVM.Models;
 using DenemeMVVM.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace DenemeMVVM.Commands
 {
     internal class CancelOrderCommand : CommandBase
     {
+        DbOperations removeOrder = new DbOperations();
         public Restaurant restaurant;
         public GetOrdersViewModel getOrdersViewModel;
 
@@ -21,7 +23,10 @@ namespace DenemeMVVM.Commands
 
         public override void Execute(object parameter)
         {
-            getOrdersViewModel._table.Orders.Remove(getOrdersViewModel.SelectedOrder);
+            Order selectedOrder = getOrdersViewModel.SelectedOrder;
+            getOrdersViewModel._table.Orders.Remove(selectedOrder);
+            removeOrder.removeOrder(selectedOrder.OrderId, selectedOrder.MenuItems.Name, selectedOrder.Quantity);
+
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using DenemeMVVM.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -52,8 +53,9 @@ namespace DenemeMVVM.Db
                     {
                         while (reader.Read())
                         {
-                            Table table = new Table(reader.GetInt32(0));
-
+                            int tableID = reader.GetInt32(0);
+                            Table table = new Table(tableID);
+                            table.Orders = setOrderList(tableID);
                             tables.Add(table);
                         }
                     }
@@ -61,6 +63,44 @@ namespace DenemeMVVM.Db
             }
 
             return tables;
+        }
+
+        public ObservableCollection<Order> setOrderList(int tableID)
+        {
+            ObservableCollection<Order> orders = new ObservableCollection<Order>();
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                string sql = "SELECT * FROM Orders WHERE OrderID = " + Convert.ToString(tableID);
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string ordersql = "Select Name, Price From MenuItem Where Name = \"" + reader.GetString(1) + "\"";
+                            using (var ordercommand = new SQLiteCommand(ordersql, connection))
+                            {
+                                using (SQLiteDataReader orderreader = ordercommand.ExecuteReader())
+                                {
+
+                                    while (orderreader.Read())
+                                    {
+                                        MenuItems item = new MenuItems(orderreader.GetString(0), orderreader.GetInt32(1));
+                                        Order order = new Order(reader.GetInt32(0), item, reader.GetInt32(2));
+                                        orders.Add(order);
+                                    }
+
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return orders;
         }
 
         public List<Employee> setEmployees()

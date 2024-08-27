@@ -109,7 +109,7 @@
     <Compile Include="Commands\LogOutCommand.cs" />
     <Compile Include="Commands\NavigateTableViewCommand.cs" />
     <Compile Include="Commands\SelectTableCommand.cs" />
-    <Compile Include="Db\DbCRUD.cs" />
+    <Compile Include="Db\DbOperations.cs" />
     <Compile Include="Db\InitializeComponents.cs" />
     <Compile Include="Stores\NavigationStore.cs" />
     <Compile Include="ViewModels\GetOrdersViewModel.cs" />

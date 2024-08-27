@@ -20,13 +20,20 @@
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="Table">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding OrderId}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Name">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock HorizontalAlignment="Center" Text="{Binding MenuItems.Name}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                    </GridViewColumn>                    
                     <GridViewColumn Header="Quantity">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

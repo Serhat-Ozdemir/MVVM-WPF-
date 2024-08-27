@@ -1,4 +1,5 @@
-﻿using DenemeMVVM.Models;
+﻿using DenemeMVVM.Db;
+using DenemeMVVM.Models;
 using DenemeMVVM.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace DenemeMVVM.Commands
 {
     internal class GiveOrderCommand : CommandBase
     {
+        DbOperations addOrder = new DbOperations();
         public Restaurant restaurant;
         public GetOrdersViewModel getOrdersViewModel;
 
@@ -23,6 +25,8 @@ namespace DenemeMVVM.Commands
         public override void Execute(object parameter)
         {
             int quantity = 0;
+            int tableNum = getOrdersViewModel.tableNum + 1;
+            
             try
             {
                 quantity = Convert.ToInt32(getOrdersViewModel.Quantity);
@@ -37,9 +41,11 @@ namespace DenemeMVVM.Commands
                 giveError();
                 return;
             }
+            
             MenuItems selectedProduct = new MenuItems(getOrdersViewModel.SelectedItem.Name, Convert.ToInt32(getOrdersViewModel.SelectedItem.Price));
-            Order order = new Order(getOrdersViewModel.tableNum, selectedProduct, Convert.ToInt32(getOrdersViewModel.Quantity));
+            Order order = new Order(tableNum, selectedProduct, quantity);
             restaurant.Tables[getOrdersViewModel.tableNum].Orders.Add(order);
+            addOrder.addOrder(tableNum, selectedProduct.Name, quantity);
         }
 
         public void giveError()

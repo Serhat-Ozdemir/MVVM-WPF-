@@ -18,7 +18,6 @@ namespace DenemeMVVM
     /// </summary>
     public partial class App : Application
     {
-        private string connectionString = "Data Source=app.db;Version=3;";
         InitializeComponents setComponents = new InitializeComponents();
         private readonly Restaurant restaurant;
         private readonly Menu menu;

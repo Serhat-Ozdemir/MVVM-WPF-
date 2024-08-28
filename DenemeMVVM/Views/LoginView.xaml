@@ -10,11 +10,11 @@
     <Grid>
         <Grid>
             <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Height="300" Width="200">
-                <TextBlock Text="UserId" Height="15" Margin="20,85,144,200"/>
+                <TextBlock Text="{DynamicResource EnterIDStr}" Height="15" Margin="20,85,144,200"/>
                 <TextBox Text="{Binding UserId, UpdateSourceTrigger=PropertyChanged}" Height="15" Width="70" Margin="20, 100, 110, 185"/>
-                <TextBlock Text="Password" Height="15" Margin="20,135,130,150"/>
+                <TextBlock Text="{DynamicResource EnterPswrdStr}" Height="15" Margin="20,135,130,150"/>
                 <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Height="15" Width="70" Margin="20, 150, 110, 135"/>
-                <Button Command="{Binding LoginCommand}" Content="Login" Height="20" Width="50" Margin="75,202,75,78"/>
+                <Button Command="{Binding LoginCommand}" Content="{DynamicResource LoginBtnStr}" Height="20" Width="50" Margin="75,202,75,78"/>
             </Grid>
         </Grid>
     </Grid>

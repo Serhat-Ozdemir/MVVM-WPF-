@@ -22,6 +22,6 @@
         <Button Grid.Column="1" Command="{Binding NavigateTableViewCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Grid.Row="1" Width="120" Height="90" FontSize="30" Content="4"/>
         <Button Grid.Column="2" Command="{Binding NavigateTableViewCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}"  Grid.Row="0" Width="120" Height="90" FontSize="30" Content="5"/>
         <Button Grid.Column="2" Command="{Binding NavigateTableViewCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Grid.Row="1" Width="120" Height="90" FontSize="30" Content="6"/>
-        <Button Grid.Column="2" Command="{Binding LogOutCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1" Width="70" Height="20" FontSize="10" Content="LogOut"/>
+        <Button Grid.Column="2" Content="{DynamicResource LogoutBtnStr}" Command="{Binding LogOutCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1" Width="70" Height="20" FontSize="10"/>
     </Grid>
 </UserControl>

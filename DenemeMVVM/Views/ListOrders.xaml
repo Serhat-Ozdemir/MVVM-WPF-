@@ -20,28 +20,28 @@
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Table">
+                    <GridViewColumn Header="{DynamicResource ListTable}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock HorizontalAlignment="Center" Text="{Binding OrderId}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Name">
+                    <GridViewColumn Header="{DynamicResource ListName}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock HorizontalAlignment="Center" Text="{Binding MenuItems.Name}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                    </GridViewColumn>                    
-                    <GridViewColumn Header="Quantity">
+                    </GridViewColumn>
+                    <GridViewColumn Header="{DynamicResource ListQuantity}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock HorizontalAlignment="Center" Text="{Binding Quantity}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Cost">
+                    <GridViewColumn Header="{DynamicResource ListCost}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock HorizontalAlignment="Center" Text="{Binding Cost}"/>
@@ -56,7 +56,7 @@
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
-            <Button Grid.Column="1" Command="{Binding LogOutCommand}" Content="LogOut" Height="20" Width="50" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+            <Button Grid.Column="1" Command="{Binding LogOutCommand}" Content="{DynamicResource LogoutBtnStr}" Height="20" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Grid Grid.Row="1">
                 <helix:HelixViewport3D>
                     <helix:HelixViewport3D.Camera>

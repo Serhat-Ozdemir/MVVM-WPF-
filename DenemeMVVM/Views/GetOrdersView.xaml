@@ -21,14 +21,14 @@
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name">
+                    <GridViewColumn Header="{DynamicResource ListName}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock HorizontalAlignment="Center" Text="{Binding Name}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Price">
+                    <GridViewColumn Header="{DynamicResource ListPrice}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock HorizontalAlignment="Center" Text="{Binding Price}"/>
@@ -57,21 +57,21 @@
                 </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Name">
+                        <GridViewColumn Header="{DynamicResource ListName}">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock HorizontalAlignment="Center" Text="{Binding MenuItems.Name}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Quantity">
+                        <GridViewColumn Header="{DynamicResource ListQuantity}">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock HorizontalAlignment="Center" Text="{Binding Quantity}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Cost">
+                        <GridViewColumn Header="{DynamicResource ListCost}">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock HorizontalAlignment="Center" Text="{Binding Cost}"/>
@@ -82,13 +82,13 @@
                 </ListView.View>
             </ListView>
 
-            <TextBlock Grid.Row="0" Width="120" Height="50" Text="Name" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBlock Grid.Row="0" Width="120" Height="50" Text="{DynamicResource ListName}" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
             <TextBlock Grid.Row="1" Width="200" Height="30" Text="{Binding SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}"  FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <TextBlock Grid.Row="2" Width="120" Height="50" Text="Quantity" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBlock Grid.Row="2" Width="120" Height="50" Text="{DynamicResource ListQuantity}" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
             <TextBox Grid.Row="3" Width="200" Height="30" Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Button Grid.Row="4" Command="{Binding GiveOrderCommand}" Content="Give Order" Width="70" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Button Grid.Row="4" Command="{Binding CancelOrderCommand}" Content="Cancel Order" Width="70" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Button Grid.Row="4" Command="{Binding SelectTableCommand}" Content="Select Table" Width="70" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+            <Button Grid.Row="4" Command="{Binding GiveOrderCommand}" Content="{DynamicResource GiveOrderBtn}" Width="70" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Button Grid.Row="4" Command="{Binding CancelOrderCommand}" Content="{DynamicResource CancelOrderBtn}" Width="70" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button Grid.Row="4" Command="{Binding SelectTableCommand}" Content="{DynamicResource SelectTableBtn}" Width="70" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </UserControl>

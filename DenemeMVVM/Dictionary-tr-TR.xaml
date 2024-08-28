@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib" >
+
+    <System:String x:Key="EnterIDStr">Id</System:String>
+    <System:String x:Key="EnterPswrdStr">Şifre</System:String>
+    <System:String x:Key="LoginBtnStr">Giriş</System:String>
+    <System:String x:Key="LogoutBtnStr">ÇıkıŞ</System:String>
+    <System:String x:Key="ListTable">Masa</System:String>
+    <System:String x:Key="ListName">İsim</System:String>
+    <System:String x:Key="ListQuantity">Adet</System:String>
+    <System:String x:Key="ListPrice">Ücret</System:String>
+    <System:String x:Key="ListCost">Tutar</System:String>
+    <System:String x:Key="GiveOrderBtn">Sipariş Ver</System:String>
+    <System:String x:Key="CancelOrderBtn">Sipariş İptal</System:String>
+    <System:String x:Key="SelectTableBtn">Masa Seç</System:String>
+</ResourceDictionary>

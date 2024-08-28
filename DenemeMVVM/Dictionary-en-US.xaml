@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib" >
+    <System:String x:Key="EnterIDStr">Id</System:String>
+    <System:String x:Key="EnterPswrdStr">Password</System:String>
+    <System:String x:Key="LoginBtnStr">Login</System:String>
+    <System:String x:Key="LogoutBtnStr">Logout</System:String>
+    <System:String x:Key="ListTable">Table</System:String>
+    <System:String x:Key="ListName">Name</System:String>
+    <System:String x:Key="ListQuantity">Quantity</System:String>
+    <System:String x:Key="ListPrice">Price</System:String>
+    <System:String x:Key="ListCost">Cost</System:String>
+    <System:String x:Key="GiveOrderBtn">Give Order</System:String>
+    <System:String x:Key="CancelOrderBtn">Cancel Order</System:String>
+    <System:String x:Key="SelectTableBtn">Select Table</System:String>
+
+</ResourceDictionary>

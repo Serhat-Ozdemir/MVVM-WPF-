@@ -12,7 +12,6 @@ namespace DenemeMVVM.ViewModels
     {
         public Table _table;
         public int TableId => _table.TableId;
-        int jjgh = 0;
         public ObservableCollection<Order> Orders => _table.Orders;
 
         public TableViewModel(Table table)

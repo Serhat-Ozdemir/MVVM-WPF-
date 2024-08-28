@@ -1,4 +1,5 @@
 ﻿using DenemeMVVM.Models;
+using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,20 +12,20 @@ namespace DenemeMVVM.Db
 {
     public class InitializeComponents
     {
-        private string connectionString = "Data Source=MVVMdatabase.db;Version=3;";
+        private string connectionString = "SERVER=94.73.149.214;DATABASE=u1915012_serhat1;UID=u1915012_serhat;PASSWORD=au0_CmA.J-aN1_78";
 
 
         public List<MenuItems> setMenu()
         {
             List<MenuItems> menu = new List<MenuItems>();
 
-            using (var connection = new SQLiteConnection(connectionString))
+            using (var con = new MySqlConnection(connectionString))
             {
-                connection.Open();
-                string sql = "SELECT Name, Price FROM MenuItem";
-                using (var command = new SQLiteCommand(sql, connection))
+                con.Open();
+                string sql = "SELECT Name, Price FROM menuitem";
+                using (var cmd = new MySqlCommand(sql, con))
                 {
-                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -43,13 +44,13 @@ namespace DenemeMVVM.Db
         {
             List<Table> tables = new List<Table>();
 
-            using (var connection = new SQLiteConnection(connectionString))
+            using (var con = new MySqlConnection(connectionString))
             {
-                connection.Open();
-                string sql = "SELECT TableId FROM _Table";
-                using (var command = new SQLiteCommand(sql, connection))
+                con.Open();
+                string sql = "SELECT TableId FROM _table";
+                using (var cmd = new MySqlCommand(sql, con))
                 {
-                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -69,32 +70,19 @@ namespace DenemeMVVM.Db
         {
             ObservableCollection<Order> orders = new ObservableCollection<Order>();
 
-            using (var connection = new SQLiteConnection(connectionString))
+            using (var con = new MySqlConnection(connectionString))
             {
-                connection.Open();
-                string sql = "SELECT * FROM Orders WHERE OrderID = " + Convert.ToString(tableID);
-                using (var command = new SQLiteCommand(sql, connection))
+                con.Open();
+                string sql = "SELECT o.OrderId, o.Name, o.Quantity, m.Price FROM `_order` o INNER JOIN menuitem m ON o.Name = m.Name Where o.OrderId=" + tableID;
+                using (var cmd = new MySqlCommand(sql, con))
                 {
-                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            string ordersql = "Select Name, Price From MenuItem Where Name = \"" + reader.GetString(1) + "\"";
-                            using (var ordercommand = new SQLiteCommand(ordersql, connection))
-                            {
-                                using (SQLiteDataReader orderreader = ordercommand.ExecuteReader())
-                                {
-
-                                    while (orderreader.Read())
-                                    {
-                                        MenuItems item = new MenuItems(orderreader.GetString(0), orderreader.GetInt32(1));
-                                        Order order = new Order(reader.GetInt32(0), item, reader.GetInt32(2));
-                                        orders.Add(order);
-                                    }
-
-                                    
-                                }
-                            }
+                            MenuItems item = new MenuItems(reader.GetString(1), reader.GetInt32(3));
+                            Order order = new Order(reader.GetInt32(0), item, reader.GetInt32(2));
+                            orders.Add(order);
                         }
                     }
                 }
@@ -107,13 +95,13 @@ namespace DenemeMVVM.Db
         {
             List<Employee> employees = new List<Employee>();
 
-            using (var connection = new SQLiteConnection(connectionString))
+            using (var con = new MySqlConnection(connectionString))
             {
-                connection.Open();
+                con.Open();
                 string sql = "SELECT ID, Job, Name, Salary FROM Employee";
-                using (var command = new SQLiteCommand(sql, connection))
+                using (var cmd = new MySqlCommand(sql, con))
                 {
-                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -122,7 +110,6 @@ namespace DenemeMVVM.Db
                                 employees.Add(new Waiter(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3)));
                             if (reader.GetString(1).Equals("Cook"))
                                 employees.Add(new Cook(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3)));
-
 
                         }
                     }

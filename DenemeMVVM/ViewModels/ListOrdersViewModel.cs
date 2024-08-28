@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media.Media3D;
 using System.Windows.Media;
 using Microsoft.Win32;
+using NDbUnit.Core;
+using DenemeMVVM.Db;
 
 namespace DenemeMVVM.ViewModels
 {
@@ -19,21 +21,14 @@ namespace DenemeMVVM.ViewModels
     {
         public ObservableCollection<Order> _allOrders;
 
+        private DbOperations getOrders = new DbOperations();
         public IEnumerable<Order> AllOrders => _allOrders;
 
 
         public ICommand LogOutCommand { get; }
         public ListOrdersViewModel(Restaurant restaurant, NavigationStore navigationStore)
         {
-            _allOrders = new ObservableCollection<Order>();
-            foreach (Table table in restaurant.Tables)
-            {
-                foreach (Order order in table.Orders)
-                {
-                    _allOrders.Add(order);
-                }
-                
-            }
+            _allOrders = getOrders.getOrders();
             LogOutCommand = new LogOutCommand(restaurant, navigationStore);
         }
 

@@ -6,22 +6,47 @@
              xmlns:local="clr-namespace:DenemeMVVM.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid Background="#f0f0f0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width=".3*"/>
-            <ColumnDefinition Width=".3*"/>
-            <ColumnDefinition Width=".3*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height=".5*"/>
-            <RowDefinition Height=".5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Column="0" Command="{Binding NavigateTableViewCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Grid.Row="0" Width="120" Height="90" FontSize="30" Content="1"/>
-        <Button Grid.Column="0" Command="{Binding NavigateTableViewCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Grid.Row="1" Width="120" Height="90" FontSize="30" Content="2"/>
-        <Button Grid.Column="1" Command="{Binding NavigateTableViewCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Grid.Row="0" Width="120" Height="90" FontSize="30" Content="3"/>
-        <Button Grid.Column="1" Command="{Binding NavigateTableViewCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Grid.Row="1" Width="120" Height="90" FontSize="30" Content="4"/>
-        <Button Grid.Column="2" Command="{Binding NavigateTableViewCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}"  Grid.Row="0" Width="120" Height="90" FontSize="30" Content="5"/>
-        <Button Grid.Column="2" Command="{Binding NavigateTableViewCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Grid.Row="1" Width="120" Height="90" FontSize="30" Content="6"/>
-        <Button Grid.Column="2" Content="{DynamicResource LogoutBtnStr}" Command="{Binding LogOutCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1" Width="70" Height="20" FontSize="10"/>
+
+        <!-- Buttons with consistent styling -->
+        <Button Grid.Column="0" Grid.Row="0" Width="120" Height="90" FontSize="30" Content="1"
+            Command="{Binding NavigateTableViewCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}"
+            Style="{StaticResource StyledButton}"/>
+
+        <Button Grid.Column="0" Grid.Row="1" Width="120" Height="90" FontSize="30" Content="2"
+            Command="{Binding NavigateTableViewCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}"
+            Style="{StaticResource StyledButton}"/>
+
+        <Button Grid.Column="1" Grid.Row="0" Width="120" Height="90" FontSize="30" Content="3"
+            Command="{Binding NavigateTableViewCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}"
+            Style="{StaticResource StyledButton}"/>
+
+        <Button Grid.Column="1" Grid.Row="1" Width="120" Height="90" FontSize="30" Content="4"
+            Command="{Binding NavigateTableViewCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}"
+            Style="{StaticResource StyledButton}"/>
+
+        <Button Grid.Column="2" Grid.Row="0" Width="120" Height="90" FontSize="30" Content="5"
+            Command="{Binding NavigateTableViewCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}"
+            Style="{StaticResource StyledButton}"/>
+
+        <Button Grid.Column="2" Grid.Row="1" Width="120" Height="90" FontSize="30" Content="6"
+            Command="{Binding NavigateTableViewCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}"
+            Style="{StaticResource StyledButton}"/>
+
+        <!-- Logout Button -->
+        <Button Grid.Column="2" Grid.Row="1" Width="70" Height="30" FontSize="10" Content="{DynamicResource LogoutBtnStr}"
+            Command="{Binding LogOutCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+            Background="#d9534f" Foreground="White" FontWeight="Bold" Margin="10"
+            BorderBrush="Transparent"/>
     </Grid>
+
 </UserControl>

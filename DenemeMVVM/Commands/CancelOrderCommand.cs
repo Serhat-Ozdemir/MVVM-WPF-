@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace DenemeMVVM.Commands
 {
@@ -23,10 +24,22 @@ namespace DenemeMVVM.Commands
 
         public override void Execute(object parameter)
         {
+            
             Order selectedOrder = getOrdersViewModel.SelectedOrder;
-            getOrdersViewModel._table.Orders.Remove(selectedOrder);
-            removeOrder.removeOrder(selectedOrder.OrderId, selectedOrder.MenuItems.Name, selectedOrder.Quantity);
+            if (selectedOrder != null)
+            {
+                getOrdersViewModel._table.Orders.Remove(selectedOrder);
+                removeOrder.removeOrder(selectedOrder.OrderId, selectedOrder.MenuItems.Name, selectedOrder.Quantity);
+            }
+            else
+                giveError();
+        }
 
+        public void giveError()
+        {
+            MessageBoxResult result = MessageBox.Show("Choose Something To Delete",
+                                          "Error",
+                                          MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

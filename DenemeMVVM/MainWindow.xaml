@@ -7,8 +7,9 @@
         xmlns:views="clr-namespace:DenemeMVVM.Views"
         xmlns:vms="clr-namespace:DenemeMVVM.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="650" Width="1000">
+    <Grid Background="#f0f0f0">
+        <!-- Define Resources for ViewModel DataTemplates -->
         <Grid.Resources>
             <DataTemplate DataType="{x:Type vms:GetOrdersViewModel}">
                 <views:GetOrdersView/>
@@ -23,12 +24,15 @@
                 <views:ListOrders/>
             </DataTemplate>
         </Grid.Resources>
-        
-        <ContentControl Content="{Binding CurrentViewModel}"/>
 
-        <ComboBox SelectedItem="{Binding SelectedLanguage}" Width="70" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0">
+        <!-- Main Content Control -->
+        <ContentControl Content="{Binding CurrentViewModel}" Margin="10" Background="White" BorderBrush="#ddd" BorderThickness="1" Padding="15"/>
+
+        <!-- Language Selection ComboBox -->
+        <ComboBox SelectedItem="{Binding SelectedLanguage}" Width="90" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Background="White" BorderBrush="#ddd" Foreground="#333" FontSize="14">
             <ComboBoxItem Content="English" Tag="en-US"/>
-            <ComboBoxItem Content="Turkce" Tag="tr-TR"/>
+            <ComboBoxItem Content="Türkçe" Tag="tr-TR"/>
         </ComboBox>
     </Grid>
+
 </Window>

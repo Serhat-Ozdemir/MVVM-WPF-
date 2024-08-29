@@ -29,7 +29,7 @@ namespace DenemeMVVM.Db
         {
             MySqlConnection con = new MySqlConnection(connectionString);
             con.Open();
-            MySqlCommand cmd = new MySqlCommand("DELETE FROM _order Where OrderId =" + orderId + " AND Name = \"" + itemName + "\" AND Quantity = " + quantity, con);
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM _order Where OrderId =" + orderId + " AND Name = \"" + itemName + "\" AND Quantity = " + quantity + " LIMIT 1", con);
             cmd.ExecuteNonQuery();
             con.Close();
             //using (var connection = new SQLiteConnection(connectionString))

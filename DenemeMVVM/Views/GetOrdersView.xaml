@@ -6,89 +6,107 @@
              xmlns:local="clr-namespace:DenemeMVVM.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        
+    <Grid Background="#f8f8f8">
+        <!-- Column Definitions -->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width=".7*"/>
-            <ColumnDefinition Width=".3*"/>
+            <ColumnDefinition Width="0.7*"/>
+            <ColumnDefinition Width="0.3*"/>
         </Grid.ColumnDefinitions>
 
-        <ListView Grid.Column="0" Margin="1,5,10,20" ItemsSource="{Binding Menu}" SelectedItem="{Binding SelectedItem}">
+        <!-- Main Menu ListView -->
+        <ListView Grid.Column="0" Margin="20" ItemsSource="{Binding Menu}" SelectedItem="{Binding SelectedItem}" Background="White" BorderBrush="#ccc" BorderThickness="1">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="Padding" Value="10"/>
+                    <Setter Property="FontSize" Value="16"/>
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="{DynamicResource ListName}">
+                    <GridViewColumn Header="{DynamicResource ListName}" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock HorizontalAlignment="Center" Text="{Binding Name}"/>
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Name}" Foreground="#333"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="{DynamicResource ListPrice}">
+                    <GridViewColumn Header="{DynamicResource ListPrice}" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock HorizontalAlignment="Center" Text="{Binding Price}"/>
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Price}" Foreground="#333"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        
-        <Grid Grid.Column="1">
+
+        <!-- Order Details and Actions Grid -->
+        <Grid Grid.Column="1" Margin="20" Background="White">
             <Grid.RowDefinitions>
-                <RowDefinition Height=".1*"/>
-                <RowDefinition Height=".1*"/>
-                <RowDefinition Height=".1*"/>
-                <RowDefinition Height=".05*"/>
-                <RowDefinition Height=".1*"/>
-                <RowDefinition Height=".5*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <ListView Grid.Row="5" Margin="5,5,10,20"  ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedOrder}"  >
+            <!-- Header for Selected Item -->
+            <TextBlock Grid.Row="0" Text="{DynamicResource ListName}" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" Foreground="#007ACC"/>
+            <TextBlock Grid.Row="1" Text="{Binding SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Margin="0,0,0,10" Foreground="#333"/>
+
+            <!-- Header for Quantity -->
+            <TextBlock Grid.Row="2" Text="{DynamicResource ListQuantity}" FontSize="18" FontWeight="Bold" Margin="0,10,0,10" Foreground="#007ACC"/>
+            <TextBox Grid.Row="3" Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Margin="0,0,0,10" BorderBrush="#ccc" Padding="5"/>
+
+            <!-- Order and Action Buttons -->
+            <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,10">
+                <Button Command="{Binding GiveOrderCommand}" Content="{DynamicResource GiveOrderBtn}" Width="80" Height="30" Margin="5" Background="#5cb85c" Foreground="White" FontWeight="Bold" BorderBrush="Transparent"/>
+                <Button Command="{Binding CancelOrderCommand}" Content="{DynamicResource CancelOrderBtn}" Width="80" Height="30" Margin="5" Background="#d9534f" Foreground="White" FontWeight="Bold" BorderBrush="Transparent"/>
+                <Button Command="{Binding SelectTableCommand}" Content="{DynamicResource SelectTableBtn}" Width="80" Height="30" Margin="5" Background="#5bc0de" Foreground="White" FontWeight="Bold" BorderBrush="Transparent"/>
+            </StackPanel>
+
+            <!-- Orders ListView -->
+            <ListView Grid.Row="5" Margin="0,10,0,0" ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedOrder}" Background="White" BorderBrush="#ccc" BorderThickness="1">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="Margin" Value="5"/>
+                        <Setter Property="Padding" Value="10"/>
+                        <Setter Property="FontSize" Value="14"/>
                     </Style>
                 </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="{DynamicResource ListName}">
+                        <GridViewColumn Header="{DynamicResource ListName}" Width="100">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock HorizontalAlignment="Center" Text="{Binding MenuItems.Name}"/>
+                                    <TextBlock HorizontalAlignment="Center" Text="{Binding MenuItems.Name}" Foreground="#333"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="{DynamicResource ListQuantity}">
+                        <GridViewColumn Header="{DynamicResource ListQuantity}" Width="60">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock HorizontalAlignment="Center" Text="{Binding Quantity}"/>
+                                    <TextBlock HorizontalAlignment="Center" Text="{Binding Quantity}" Foreground="#333"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="{DynamicResource ListCost}">
+                        <GridViewColumn Header="{DynamicResource ListCost}" Width="80">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock HorizontalAlignment="Center" Text="{Binding Cost}"/>
+                                    <TextBlock HorizontalAlignment="Center" Text="{Binding Cost}" Foreground="#333"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
-
-            <TextBlock Grid.Row="0" Width="120" Height="50" Text="{DynamicResource ListName}" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-            <TextBlock Grid.Row="1" Width="200" Height="30" Text="{Binding SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}"  FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <TextBlock Grid.Row="2" Width="120" Height="50" Text="{DynamicResource ListQuantity}" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-            <TextBox Grid.Row="3" Width="200" Height="30" Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Button Grid.Row="4" Command="{Binding GiveOrderCommand}" Content="{DynamicResource GiveOrderBtn}" Width="70" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Button Grid.Row="4" Command="{Binding CancelOrderCommand}" Content="{DynamicResource CancelOrderBtn}" Width="70" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Button Grid.Row="4" Command="{Binding SelectTableCommand}" Content="{DynamicResource SelectTableBtn}" Width="70" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
+
+
 </UserControl>

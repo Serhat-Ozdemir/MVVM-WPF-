@@ -14,6 +14,8 @@ using System.Windows.Media;
 using Microsoft.Win32;
 using NDbUnit.Core;
 using DenemeMVVM.Db;
+using System.Windows.Threading;
+using System.Collections.Specialized;
 
 namespace DenemeMVVM.ViewModels
 {
@@ -24,12 +26,23 @@ namespace DenemeMVVM.ViewModels
         private DbOperations getOrders = new DbOperations();
         public IEnumerable<Order> AllOrders => _allOrders;
 
-
         public ICommand LogOutCommand { get; }
         public ListOrdersViewModel(Restaurant restaurant, NavigationStore navigationStore)
         {
             _allOrders = getOrders.getOrders();
+            DispatcherTimer dt = new DispatcherTimer();
+            dt.Interval = TimeSpan.FromSeconds(3);
+            dt.Tick += setList;
+            dt.Start();
             LogOutCommand = new LogOutCommand(restaurant, navigationStore);
+
+            
+        }
+
+        private void setList(object sender, EventArgs e)
+        {
+            _allOrders = getOrders.getOrders();
+            OnPropertyChanged(nameof(AllOrders));
         }
 
         private Model3DGroup _model;

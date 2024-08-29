@@ -7,6 +7,16 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Dictionary-en-US.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="StyledButton" TargetType="Button">
+                <Setter Property="Background" Value="#007ACC"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Padding" Value="10"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

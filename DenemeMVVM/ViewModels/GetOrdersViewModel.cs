@@ -32,7 +32,7 @@ namespace DenemeMVVM.ViewModels
             SelectTableCommand = new SelectTableCommand(restaurant, navigationStore);
 
             _menu = new ObservableCollection<MenuItemsViewModel>();
-            foreach (MenuItems item in restaurant.Menu.menu) 
+            foreach (MenuItem item in restaurant.Menu.menu) 
             {
                 _menu.Add(new MenuItemsViewModel(item));
             }

@@ -11,15 +11,15 @@ namespace DenemeMVVM.Models
     public class Order
     {
         public int OrderId { get; set; }
-        public MenuItems MenuItems { get; set; }
+        public MenuItem MenuItem { get; set; }
         public int Quantity { get; set; }
         public int Cost { get; set; }
 
 
-        public Order(int OrderId, MenuItems MenuItems, int Quantity)
+        public Order(int OrderId, MenuItem MenuItems, int Quantity)
         {
             this.OrderId = OrderId;
-            this.MenuItems = MenuItems;
+            this.MenuItem = MenuItems;
             this.Quantity = Quantity;
             Cost = MenuItems.Price * Quantity;
         }

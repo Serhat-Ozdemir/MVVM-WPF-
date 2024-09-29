@@ -10,11 +10,11 @@ namespace DenemeMVVM.ViewModels
 
     public class MenuItemsViewModel : ViewModelBase
     {
-        public MenuItems _menuItem;                    
+        public MenuItem _menuItem;                    
         public string Name => _menuItem.Name;
         public string Price => _menuItem.Price.ToString();
 
-        public MenuItemsViewModel(MenuItems menuItem) 
+        public MenuItemsViewModel(MenuItem menuItem) 
         { 
             _menuItem = menuItem;
         }

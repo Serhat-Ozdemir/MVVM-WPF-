@@ -127,15 +127,14 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\MenuItemsViewModel.cs" />
-    <Compile Include="ViewModels\OrdersViewModel.cs" />
     <Compile Include="ViewModels\SelectTableViewModel.cs" />
     <Compile Include="ViewModels\TableViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\GetOrdersView.xaml.cs">
       <DependentUpon>GetOrdersView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ListOrders.xaml.cs">
-      <DependentUpon>ListOrders.xaml</DependentUpon>
+    <Compile Include="Views\ListOrdersView.xaml.cs">
+      <DependentUpon>ListOrdersView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -167,7 +166,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ListOrders.xaml">
+    <Page Include="Views\ListOrdersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -184,7 +183,7 @@
     <Compile Include="Models\Cook.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Menu.cs" />
-    <Compile Include="Models\MenuItems.cs" />
+    <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\Table.cs" />

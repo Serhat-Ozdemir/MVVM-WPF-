@@ -36,7 +36,7 @@
                     <GridViewColumn Header="{DynamicResource ListName}" Width="200">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock HorizontalAlignment="Center" Text="{Binding MenuItems.Name}" Foreground="#333"/>
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding MenuItem.Name}" Foreground="#333"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

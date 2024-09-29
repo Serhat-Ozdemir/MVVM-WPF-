@@ -8,16 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace DenemeMVVM.Db
 {
     public class InitializeComponents
     {
-        private string connectionString = "SERVER=94.73.149.214;DATABASE=u1915012_serhat1;UID=u1915012_serhat;PASSWORD=au0_CmA.J-aN1_78";
+        private string connectionString = "SERVER=localhost;DATABASE=restaurant;UID=root;PASSWORD=Ozdemir.1";
 
 
-        public List<MenuItems> setMenu()
+        public List<MenuItem> setMenu()
         {
-            List<MenuItems> menu = new List<MenuItems>();
+            List<MenuItem> menu = new List<MenuItem>();
 
             using (var con = new MySqlConnection(connectionString))
             {
@@ -29,7 +30,7 @@ namespace DenemeMVVM.Db
                     {
                         while (reader.Read())
                         {
-                            MenuItems item = new MenuItems(reader.GetString(0), reader.GetInt32(1));
+                            MenuItem item = new MenuItem(reader.GetString(0), reader.GetInt32(1));
 
                             menu.Add(item);
                         }
@@ -80,7 +81,7 @@ namespace DenemeMVVM.Db
                     {
                         while (reader.Read())
                         {
-                            MenuItems item = new MenuItems(reader.GetString(1), reader.GetInt32(3));
+                            MenuItem item = new MenuItem(reader.GetString(1), reader.GetInt32(3));
                             Order order = new Order(reader.GetInt32(0), item, reader.GetInt32(2));
                             orders.Add(order);
                         }

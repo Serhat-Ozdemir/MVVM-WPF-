@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:System="clr-namespace:System;assembly=mscorlib" >
-    <System:String x:Key="EnterIDStr">Id</System:String>
+    <System:String x:Key="EnterIDStr">User</System:String>
     <System:String x:Key="EnterPswrdStr">Password</System:String>
     <System:String x:Key="LoginBtnStr">Login</System:String>
     <System:String x:Key="LogoutBtnStr">Logout</System:String>

@@ -29,7 +29,7 @@ namespace DenemeMVVM.Commands
             if (selectedOrder != null)
             {
                 getOrdersViewModel._table.Orders.Remove(selectedOrder);
-                removeOrder.removeOrder(selectedOrder.OrderId, selectedOrder.MenuItems.Name, selectedOrder.Quantity);
+                removeOrder.removeOrder(selectedOrder.OrderId, selectedOrder.MenuItem.Name, selectedOrder.Quantity);
             }
             else
                 giveError();

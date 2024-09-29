@@ -42,7 +42,7 @@ namespace DenemeMVVM.Commands
                 return;
             }
             
-            MenuItems selectedProduct = new MenuItems(getOrdersViewModel.SelectedItem.Name, Convert.ToInt32(getOrdersViewModel.SelectedItem.Price));
+            MenuItem selectedProduct = new MenuItem(getOrdersViewModel.SelectedItem.Name, Convert.ToInt32(getOrdersViewModel.SelectedItem.Price));
             Order order = new Order(tableNum, selectedProduct, quantity);
             restaurant.Tables[getOrdersViewModel.tableNum].Orders.Add(order);
             addOrder.addOrder(tableNum, selectedProduct.Name, quantity);

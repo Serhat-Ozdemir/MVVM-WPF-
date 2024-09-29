@@ -5,17 +5,11 @@ using HelixToolkit.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
 using System.Windows.Media;
-using Microsoft.Win32;
-using NDbUnit.Core;
 using DenemeMVVM.Db;
 using System.Windows.Threading;
-using System.Collections.Specialized;
 
 namespace DenemeMVVM.ViewModels
 {
@@ -70,7 +64,8 @@ namespace DenemeMVVM.ViewModels
             {
                 _selectedItem = value;
                 OnPropertyChanged(nameof(SelectedItem));
-                Model = CreateModel(SelectedItem.MenuItems.Name);
+                if(SelectedItem != null)
+                    Model = CreateModel(SelectedItem.MenuItem.Name);
             }
         }
 
@@ -103,11 +98,11 @@ namespace DenemeMVVM.ViewModels
             var materialDetail = new DiffuseMaterial();
             switch (itemName)
             {
-                case "red":
+                case "Water":
                     materialDetail.Brush = new SolidColorBrush(Colors.Red); break;
-                case "blue":
+                case "Cheesecakke":
                     materialDetail.Brush = new SolidColorBrush(Colors.Blue); break;
-                case "yellow":
+                case "Hamburger":
                     materialDetail.Brush = new SolidColorBrush(Colors.Yellow); break;
                 case "green":
                     materialDetail.Brush = new SolidColorBrush(Colors.Green); break;

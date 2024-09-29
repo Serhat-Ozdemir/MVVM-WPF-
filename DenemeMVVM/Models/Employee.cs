@@ -13,8 +13,7 @@ namespace DenemeMVVM.Models
         public Employee( int ID, string Job) 
         { 
             this.Id = ID;      
-            this.Job = Job;
-        }
+            this.Job = Job;        }
 
     }
 }

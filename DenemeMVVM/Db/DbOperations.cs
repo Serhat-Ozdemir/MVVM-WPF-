@@ -14,7 +14,7 @@ namespace DenemeMVVM.Db
 {
     public class DbOperations
     {
-        private string connectionString = "SERVER=94.73.149.214;DATABASE=u1915012_serhat1;UID=u1915012_serhat;PASSWORD=au0_CmA.J-aN1_78";
+        private string connectionString = "SERVER=localhost;DATABASE=restaurant;UID=root;PASSWORD=Ozdemir.1";
         public void addOrder(int orderId, string itemName, int quantity)
         {
 
@@ -32,13 +32,7 @@ namespace DenemeMVVM.Db
             MySqlCommand cmd = new MySqlCommand("DELETE FROM _order Where OrderId =" + orderId + " AND Name = \"" + itemName + "\" AND Quantity = " + quantity + " LIMIT 1", con);
             cmd.ExecuteNonQuery();
             con.Close();
-            //using (var connection = new SQLiteConnection(connectionString))
-            //{
-            //    connection.Open();
-            //    string sql = "DELETE FROM Orders Where OrderId =" + orderId + " AND Name = \"" + itemName + "\" AND Quantity = "+ quantity;
-            //    SQLiteCommand command = new SQLiteCommand(sql, connection);
-            //    command.ExecuteNonQuery();
-            //}
+
 
         }
 
@@ -56,7 +50,7 @@ namespace DenemeMVVM.Db
                     {
                         while (reader.Read())
                         {
-                            MenuItems item = new MenuItems(reader.GetString(1), reader.GetInt32(3));
+                            Models.MenuItem item = new Models.MenuItem(reader.GetString(1), reader.GetInt32(3));
                             Order order = new Order(reader.GetInt32(0), item, reader.GetInt32(2));
                             orders.Add(order);
                         }

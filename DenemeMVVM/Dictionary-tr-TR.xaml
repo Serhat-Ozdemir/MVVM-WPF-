@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:System="clr-namespace:System;assembly=mscorlib" >
 
-    <System:String x:Key="EnterIDStr">Id</System:String>
+    <System:String x:Key="EnterIDStr">Kullanıcı</System:String>
     <System:String x:Key="EnterPswrdStr">Şifre</System:String>
     <System:String x:Key="LoginBtnStr">Giriş</System:String>
     <System:String x:Key="LogoutBtnStr">ÇıkıŞ</System:String>
